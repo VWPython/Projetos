@@ -63,7 +63,7 @@ def fanout_exchange_type_declare(channel, exchange_name):
     Return: Nothing
     """
 
-    channel.exchange_declare(exchange='logs', type='fanout')
+    channel.exchange_declare(exchange=exchange_name, type='fanout')
 
 
 def create_temporary_queue(channel):
@@ -141,7 +141,7 @@ def wait_for_data(channel):
 
 def main():
     """
-    Simple logging system that receive and print log menssages.
+    Simple logging system that receive and print log messages.
     """
 
     connection = establish_connection()
