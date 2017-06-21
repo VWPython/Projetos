@@ -22,15 +22,54 @@ class PrimeNumbersGenerator(object):
 
             max_number = 7
 
-            return: "2, 3, 4, 5, 7"
+            return: "2, 3, 5, 7"
         """
 
-        # If max number is 1 an exception is thrown
-        if (max_number == 1):
+        if (max_number >= self.SMALLEST_PRIME):
+            return self.__get_prime_numbers(max_number)
+        else:
             raise InvalidMaxNumberException()
 
-        # If max number is bigger than smallest prime return the primes string
-        if (max_number == self.SMALLEST_PRIME):
-            return "2"
-        else:
-            return "2, 3"
+    def __get_prime_numbers(self, max_number):
+        # Generates prime numbers to n using Eratostenes algorithm.
+
+        is_prime = self.__initializes_potential_prime_list(max_number)
+
+        # Insert False on even number and remains True on odd numbers from list
+        for value in range(self.SMALLEST_PRIME, max_number + 1):
+            if (is_prime[value]):
+                for not_prime in range(self.SMALLEST_PRIME * value, max_number + 1, value):
+                    is_prime[not_prime] = False
+
+        return self.__format_result(max_number, is_prime)
+
+    def __format_result(self, max_number, is_prime):
+        # Create the result string with all prime numbers from smallest prime
+        # until max number
+
+        result = str(self.SMALLEST_PRIME)
+
+        # Insert all prime numbers until max number on string result
+        # on format "2, 3, 5, ..."
+        for number in range(self.SMALLEST_PRIME + 1, max_number +1):
+            if (is_prime[number]):
+                result += ", " + str(number)
+
+        return result
+
+    def __initializes_potential_prime_list(self, max_number):
+        # Initializes the array with all the numbers from 0 to max_number
+
+        potential_prime_list = []
+
+        potential_prime_list.append(False)
+        potential_prime_list.append(False)
+
+        # Insert True on all potential prime numbers that going from 2 until max
+        # number
+        number = int(self.SMALLEST_PRIME)
+        while (number < max_number + 1):
+            potential_prime_list.append(True)
+            number += 1
+
+        return potential_prime_list
