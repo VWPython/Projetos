@@ -14,14 +14,16 @@ A consumer is a user application that receives messages.
 import pika  # Python client recommended by the RabbitMQ
 
 
-def establish_connection():
+def establish_connection(ip_address):
     """
     Establish a connection with RabbitMQ server
 
     Return: The connection with RabbitMQ server
     """
 
-    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    connection = pika.BlockingConnection(
+        pika.ConnectionParameters(host=ip_address)
+    )
     return connection
 
 
@@ -99,7 +101,7 @@ def main():
     Send a single message to the queue.
     """
 
-    connection = establish_connection()
+    connection = establish_connection('localhost')
     channel = create_channel(connection)
     create_queue(channel, 'hello')
     queue_exchange(channel, 'hello', 'Hello World')

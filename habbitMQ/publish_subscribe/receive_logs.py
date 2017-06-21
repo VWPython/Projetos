@@ -16,7 +16,7 @@ This pattern is known as "publish/subscribe".
 import pika  # Python client recommended by the RabbitMQ
 
 
-def establish_connection():
+def establish_connection(ip_address):
     """
     Establish a connection with RabbitMQ server.
 
@@ -24,7 +24,7 @@ def establish_connection():
     """
 
     connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host='localhost')
+        pika.ConnectionParameters(host=ip_address)
     )
     return connection
 
@@ -144,7 +144,7 @@ def main():
     Simple logging system that receive and print log messages.
     """
 
-    connection = establish_connection()
+    connection = establish_connection('localhost')
     channel = create_channel(connection)
     fanout_exchange_type_declare(channel, 'logs')
     queue_name = create_temporary_queue(channel)

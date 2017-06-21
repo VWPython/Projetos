@@ -17,7 +17,7 @@ import pika  # Python client recommended by the RabbitMQ
 import sys  # Provides access to some variables used by the interpreter
 
 
-def establish_connection():
+def establish_connection(ip_address):
     """
     Establish a connection with RabbitMQ server.
 
@@ -25,7 +25,7 @@ def establish_connection():
     """
 
     connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host='localhost')
+        pika.ConnectionParameters(host=ip_address)
     )
     return connection
 
@@ -120,7 +120,7 @@ def main():
     Simple logging system that emit log messages
     """
 
-    connection = establish_connection()
+    connection = establish_connection('localhost')
     channel = create_channel(connection)
     fanout_exchange_type_declare(channel, 'logs')
     message = create_message()
