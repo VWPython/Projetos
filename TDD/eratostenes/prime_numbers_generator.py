@@ -35,7 +35,11 @@ class PrimeNumbersGenerator(object):
 
         is_prime = self.__initializes_potential_prime_list(max_number)
 
-        # Insert False on even number and remains True on odd numbers from list
+        # Insert False on not prime numbers
+        # Ex: 2 -> 22 is True
+        # 2*2 -> 22 = 4(False), 6(False), 8(False), 10(False), 12(False), ...
+        # 2*3 -> 22 = 6(False), 9(False), 12(False), ...
+        # 2*5 -> 22 = 10(False), 15(False), 20(False)
         for value in range(self.SMALLEST_PRIME, max_number + 1):
             if (is_prime[value]):
                 for not_prime in range(self.SMALLEST_PRIME * value, max_number + 1, value):
