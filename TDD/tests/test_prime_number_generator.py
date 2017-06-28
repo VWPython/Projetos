@@ -3,7 +3,7 @@ Test the PrimeNumbersGenerator class using pytest
 """
 
 from eratostenes.prime_numbers_generator import PrimeNumbersGenerator
-from eratostenes.invalid_max_number_exception import InvalidMaxNumberException
+from eratostenes.validations_exception import InvalidInsertedNumberException
 
 
 class TestPrimeNumberGenerator(object):
@@ -55,37 +55,37 @@ class TestPrimeNumberGenerator(object):
 
         self.__verify_generate_prime_numbers("2, 3, 5, 7, 11, 13, 17, 19", 22)
 
-    def test_max_number_one(self):
+    def test_inserted_number_one(self):
         """
         Test invalid max number: 1
         """
 
-        self.__verify_invalid_max_number_rejected(1)
+        self.__verify_invalid_inserted_number_rejected(1)
 
-    def test_max_number_zero(self):
+    def test_inserted_number_zero(self):
         """
         Test invalid max number: 0
         """
 
-        self.__verify_invalid_max_number_rejected(0)
+        self.__verify_invalid_inserted_number_rejected(0)
 
-    def test_max_number_negative(self):
+    def test_inserted_number_negative(self):
         """
         Test invalid max number: -1
         """
 
-        self.__verify_invalid_max_number_rejected(-1)
+        self.__verify_invalid_inserted_number_rejected(-1)
 
-    def __verify_invalid_max_number_rejected(self, max_number):
-        # Verifies if the exception is throw for an invalid max number.
+    def __verify_invalid_inserted_number_rejected(self, inserted_number):
+        # Verifies if the exception is throw for an invalid inserted number.
 
         try:
-            self.prime_generator.generate_prime_numbers_to(max_number)
-        except InvalidMaxNumberException:
+            self.prime_generator.generate_prime_numbers_to(inserted_number)
+        except InvalidInsertedNumberException:
             assert True is True
 
-    def __verify_generate_prime_numbers(self, expected_list, max_number):
+    def __verify_generate_prime_numbers(self, expected_list, inserted_number):
         # Verifies if the returned prime string matches the expected string
 
-        returned_list = self.prime_generator.generate_prime_numbers_to(max_number)
+        returned_list = self.prime_generator.generate_prime_numbers_to(inserted_number)
         assert expected_list == returned_list
