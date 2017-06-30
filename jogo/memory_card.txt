@@ -1,0 +1,9 @@
+Player
+Vida = 72
+SP = 11
+
+Enemies:
+1 - 22
+4 - 26
+5 - 14
+8 - 3
