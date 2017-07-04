@@ -8,119 +8,138 @@ Tutoriais:
     http://effbot.org/tkinterbook/tkinter-index.htm#class-reference
 """
 
-from tkinter import Tk, Label, Button, Entry, Frame, LEFT
+from functools import partial
+from tkinter import Tk, Label, Button, Entry, Frame, LEFT, PhotoImage, END
 
 
-class StatisticalCalculator(object):
+class Calculator(object):
     """
     Class that create statistical calculator GUI
     """
 
     def __init__(self, window):
         self.window = window
-        self.configure_window()
-        self.welcome_label = self.create_label()
-        self.entry_input = self.create_input()
-        self.calculate_button = self.create_calculate_button()
-        self.result_label = self.create_result_label()
-        self.create_statistic_buttons()
+        self.__configure_window()
+        self.__create_math_label()
+        self.__create_input()
+        self.__create_calculate_button()
+        self.__create_result_label()
+        self.__create_math_buttons()
 
     def __str__(self):
-        return "Statistical calculator GUI"
+        return "Calculator GUI"
 
-    def __calcule(self):
-        self.result_label['text'] = self.entry_input.get()
-        self.result_label['foreground'] = "green"
+    def __configure_window(self):
+        HEIGHT = 600
+        WIDTH = 800
 
-    def configure_window(self):
         # Give a title to window
-        self.window.title("Calculadora para Estatística")
+        self.window.title("Calculadora Cientifica")
 
         # Give a size to window
-        self.window.geometry("800x600")
+        self.window.geometry("{0}x{1}".format(WIDTH, HEIGHT))
 
-    def create_label(self):
+        # Configure color palette and font style
+        self.__color_palette()
+        self.__font_style()
+
+        # Frame not resizable no x, y
+        self.window.resizable(False, False)
+
+        # Background color
+        self.window['background'] = self.teal
+
+    def __color_palette(self):
+        self.teal_lighten = "#E0F2F1"
+        self.teal = "#009688"
+        self.teal_darken = "#004D40"
+        self.red_darken = "#B71C1C"
+        self.black = "black"
+        self.white = "white"
+
+    def __font_style(self):
+        self.verdana14bold = ('Verdana', '14', 'bold')
+        self.verdana10bold = ('Verdana', '10', 'bold')
+        self.verdana18bold = ('Verdana', '18', 'bold')
+
+    def __create_math_label(self):
         # Create a welcome label frame
-        frame = Frame(
-            self.window
-        )
+        frame = Frame(self.window)
+        frame.pack()
 
-        # Create the welcome label
-        label = Label(
+        # Create the math label
+        self.math_label = Label(
             frame,
-            text="Bem vindo!",
-            pady=20
+            height=200,
+            background=self.teal,
+            pady=5
         )
+        self.math_label.pack()
 
-        # Packing the frame and label
-        frame.pack()
-        label.pack()
+        # Create a math label
+        logo = PhotoImage(file='img/background.gif')
+        self.math_label.image = logo
+        self.math_label['image'] = logo
 
-        return label
+    def __message(self, text, color='#B71C1C'):
+        self.result_label['text'] = text
+        self.result_label['foreground'] = color
 
-    def create_input(self):
+    def __create_input(self):
         # Create a input frame
-        frame = Frame(
-            self.window,
-            pady=5
-        )
-        # Create the input text
-        entry_input = Entry(
-            frame
-        )
-
-        # Packing the frame and input
+        frame = Frame(self.window, pady=5, background=self.teal)
         frame.pack()
-        entry_input.pack()
 
-        return entry_input
+        # Create the input text
+        self.entry_input = Entry(frame, width=50)
+        self.entry_input.pack()
 
-    def create_calculate_button(self):
+    def __create_calculate_button(self):
         # Create a calculate button frame
-        frame = Frame(
-            self.window,
-            pady=5
-        )
+        frame = Frame(self.window, pady=5, background=self.teal)
+        frame.pack()
+
         # Create calculate button
-        button = Button(
+        self.calculate_button = Button(
             frame,
             text="Calcule",
-            foreground="black",
-            background="green",
+            foreground=self.white,
+            background=self.teal_darken,
+            font=self.verdana18bold,
             command=self.__calcule
         )
+        self.calculate_button.pack()
 
-        # Packing the frame and button
-        button.pack()
-        frame.pack()
+    def __calcule(self):
+        START = 0
 
-        return button
+        if self.entry_input.get() == '':
+            self.__message("Campo vazio!", self.white)
+        else:
+            self.__message(self.entry_input.get(), self.white)
+            self.entry_input.delete(START, END)
 
-    def create_result_label(self):
+        self.result_label['font'] = self.verdana14bold
+
+    def __create_result_label(self):
         # Create a result label frame
-        frame = Frame(
-            self.window,
-            pady=5
-        )
+        frame = Frame(self.window, pady=10, background=self.teal)
+        frame.pack()
 
         # Create a result label
-        label = Label(
+        self.result_label = Label(
             frame,
             text="Resultado",
-            foreground="blue"
+            font=self.verdana14bold,
+            background=self.teal,
+            foreground=self.white
         )
+        self.result_label.pack()
 
-        # Packing the frame and label
-        label.pack()
+    def __create_math_buttons(self):
+        # Create a math button frame
+        frame = Frame(self.window)
         frame.pack()
-
-        return label
-
-    def create_statistic_buttons(self):
-        # Create a statistic button frame
-        frame = Frame(
-            self.window
-        )
 
         # Button text
         button_text = (
@@ -143,34 +162,50 @@ class StatisticalCalculator(object):
             'p(k1 <= x <= k2)'
         )
 
-        # Create all subframes with three statistic button each
+        # Create all subframes with three math button each
         for index in range(len(button_text)):
             if index % 3 == 0:
                 subframe = Frame(frame)
                 subframe.pack()
-            self.button = Button(
+
+            self.math_button = Button(
                 subframe,
                 text=button_text[index],
-                background="green",
-                width=25
+                font=self.verdana10bold,
+                foreground=self.white,
+                background=self.teal_darken,
+                width=25,
+                command=partial(
+                    self.__insert_text_on_input,
+                    button_text[index]
+                )
             )
-            self.button.pack(side=LEFT)
-        frame.pack()
+            self.math_button.pack(side=LEFT)
 
-        self.delete_button = Button(
+        # Create delete button
+        self.delete_math_button = Button(
             subframe,
             text="delete",
-            background="red",
-            width=25
+            font=self.verdana10bold,
+            foreground=self.white,
+            background=self.red_darken,
+            width=25,
+            command=self.__delete_text_on_input
         )
-        self.delete_button.pack()
+        self.delete_math_button.pack()
+
+    def __insert_text_on_input(self, text):
+        self.entry_input.insert(END, text)
+
+    def __delete_text_on_input(self):
+        self.entry_input.delete(0, END)
 
 if __name__ == '__main__':
     # Create my window
     window = Tk()
 
-    # Create statistical calculator
-    StatisticalCalculator(window)
+    # Create cientific calculator
+    Calculator(window)
 
     # Run GUI
     window.mainloop()
