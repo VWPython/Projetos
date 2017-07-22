@@ -1,0 +1,12 @@
+Aulas Python - 106 - Ferramentas de Sistema II: Básico módulo os
+
+Funções e constantes básicas do módulo os
+
+Bibliografia:
+Programming Python  - pg 90 a 92, 109 a 112
+Beginning python from novice to Professional - pg 217
+
+Dropbox:
+https://www.dropbox.com/sh/t0lvoxb2fxfhctx/AABIYnYyvqPby6oq0NkQWpRaa
+
+ferramentas, sistema, operacional, sys, platform, os, getpid, getcwd, rename, remove, urandom, pathsep, sep, pardir, curdir, linesep, environ

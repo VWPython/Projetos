@@ -1,0 +1,31 @@
+Aulas Python - 108 - Ferramentas de Sistema IV: Shell Commands
+
+Como executar comandos do terminal por
+meio de um script escrito em python
+
+Bibliografia:
+
+Comandos no Terminal Linux:
+http://wiki.ubuntu-br.org/ComandosBasicos
+
+Comandos da prompt de Comando do Windows:
+https://www.youtube.com/watch?v=-52t42FgaO8
+
+Comandos do terminal MAC
+http://computers.tutsplus.com/pt/tutorials/10-terminal-commands-that-every-mac-user-should-know--mac-4825
+
+Como configurar o pythonpath
+http://www.ehow.com.br/configurar-python-path-como_32933/
+
+Como executar python pela prompt do Windows
+https://www.youtube.com/watch?v=es4ojKGRRzg
+
+Livros:
+Introdução a Python - Modulo A, Parte VII, cap. 2
+Programming Python - pgs 94 a 97, 99, 261 a 263
+Beginning python from Novice to Professional - pg 219
+
+Dropbox:
+https://www.dropbox.com/sh/t0lvoxb2fxfhctx/AABIYnYyvqPby6oq0NkQWpRaa
+
+ferramenta, sistema, shell, commands, terminal, prompt, os, sys, system, popen, startfile

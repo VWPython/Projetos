@@ -1,0 +1,13 @@
+Aulas Python - 107 - Ferramentas de Sistema III: os
+
+Funções mais relevantes com relação ao pacote os.path
+
+Bibliografia:
+https://docs.python.org/3.4/library/os.path.html
+Programming Python - pg 92 a 94
+Beginning Python from Novice to Professional - pg 432 e 433
+
+Dropbox:
+https://www.dropbox.com/sh/t0lvoxb2fxfhctx/AABIYnYyvqPby6oq0NkQWpRaa
+
+ferramentas, sistema, operacional, sys, os, os.path, split, join, dirname, basename, isdir, isfile, exists, normpath, abspath

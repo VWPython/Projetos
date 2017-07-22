@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mlt title="Anonymous Submission" version="0.9.3" root="/home/pedro" LC_NUMERIC="pt_BR.UTF-8">
+ <profile width="1440" display_aspect_den="9" colorspace="709" frame_rate_den="1" description="HDV 1440x1080i 25 fps" height="1080" display_aspect_num="16" frame_rate_num="25" progressive="0" sample_aspect_num="4" sample_aspect_den="3"/>
+ <producer in="0" out="26601" id="black">
+  <property name="mlt_type">producer</property>
+  <property name="length">26602</property>
+  <property name="eof">pause</property>
+  <property name="resource">black</property>
+  <property name="aspect_ratio">0</property>
+  <property name="mlt_service">colour</property>
+ </producer>
+ <playlist id="black_track">
+  <entry in="0" out="26427" producer="black"/>
+ </playlist>
+ <playlist id="playlist1"/>
+ <playlist id="playlist2"/>
+ <playlist id="playlist3"/>
+ <producer in="0" out="26601" id="2_1">
+  <property name="mlt_type">producer</property>
+  <property name="length">26602</property>
+  <property name="eof">pause</property>
+  <property name="resource">kdenlive/IZ/Aulas Python/Aulas Python - 106 - Ferramentas de Sistema II: Básico módulo os/106.wav</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">1</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">705600</property>
+  <property name="seekable">1</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mlt_service">avformat</property>
+ </producer>
+ <playlist id="playlist4">
+  <blank length="21"/>
+  <entry in="146" out="26552" producer="2_1"/>
+ </playlist>
+ <producer in="0" out="26407" id="1">
+  <property name="mlt_type">producer</property>
+  <property name="length">26408</property>
+  <property name="eof">pause</property>
+  <property name="resource">kdenlive/IZ/Aulas Python/Aulas Python - 106 - Ferramentas de Sistema II: Básico módulo os/106.mp4</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">30</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1360</property>
+  <property name="meta.media.0.codec.height">768</property>
+  <property name="meta.media.0.codec.frame_rate">30</property>
+  <property name="meta.media.0.codec.pix_fmt">yuv444p</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">1</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">h264</property>
+  <property name="meta.media.0.codec.long_name">H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10</property>
+  <property name="meta.media.0.codec.bit_rate">426088</property>
+  <property name="meta.attr.0.stream.creation_time.markup">2014-12-07 12:25:05</property>
+  <property name="meta.attr.0.stream.language.markup">eng</property>
+  <property name="meta.attr.major_brand.markup">mp42</property>
+  <property name="meta.attr.minor_version.markup">0</property>
+  <property name="meta.attr.compatible_brands.markup">mp42mp41isomiso2</property>
+  <property name="meta.attr.creation_time.markup">2014-12-07 12:25:05</property>
+  <property name="meta.attr.encoder.markup">x264</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mlt_service">avformat</property>
+  <property name="meta.media.frame_rate_num">30</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1360</property>
+  <property name="meta.media.height">768</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <playlist id="playlist5">
+  <entry in="0" out="26407" producer="1"/>
+ </playlist>
+ <tractor title="Anonymous Submission" global_feed="1" in="0" out="26427" id="maintractor">
+  <property name="meta.volume">1</property>
+  <track producer="black_track"/>
+  <track hide="video" producer="playlist1"/>
+  <track hide="video" producer="playlist2"/>
+  <track producer="playlist3"/>
+  <track producer="playlist4"/>
+  <track producer="playlist5"/>
+  <transition id="transition0">
+   <property name="a_track">1</property>
+   <property name="b_track">2</property>
+   <property name="mlt_type">transition</property>
+   <property name="mlt_service">mix</property>
+   <property name="always_active">1</property>
+   <property name="combine">1</property>
+   <property name="internal_added">237</property>
+  </transition>
+  <transition id="transition1">
+   <property name="a_track">1</property>
+   <property name="b_track">3</property>
+   <property name="mlt_type">transition</property>
+   <property name="mlt_service">mix</property>
+   <property name="always_active">1</property>
+   <property name="combine">1</property>
+   <property name="internal_added">237</property>
+  </transition>
+  <transition id="transition2">
+   <property name="a_track">1</property>
+   <property name="b_track">4</property>
+   <property name="mlt_type">transition</property>
+   <property name="mlt_service">mix</property>
+   <property name="always_active">1</property>
+   <property name="combine">1</property>
+   <property name="internal_added">237</property>
+  </transition>
+  <transition id="transition3">
+   <property name="a_track">1</property>
+   <property name="b_track">5</property>
+   <property name="mlt_type">transition</property>
+   <property name="mlt_service">mix</property>
+   <property name="always_active">1</property>
+   <property name="combine">1</property>
+   <property name="internal_added">237</property>
+  </transition>
+ </tractor>
+ <kdenlivedoc profile="hdv_1080_50i" kdenliveversion="0.9.10" version="0,88" projectfolder="/home/pedro/kdenlive">
+  <customeffects/>
+  <documentproperties documentid="1417956249298" renderaudiobitrate="160" renderdestination="" renderrescalewidth="320" proxyextension="ts" generateproxy="0" proxyimageminsize="2000" rendertctype="0" verticalzoom="1" renderprofile="H.264/AAC High Profile" renderrescaleheight="240" zonein="0" renderrescale="0" renderscanning="0" renderurl="/home/pedro/kdenlive/IZ/Aulas Python/Aulas Python - 106 - Ferramentas de Sistema II: Básico módulo os/Aulas Python - 106 - Ferramentas de Sistema II: Básico módulo os.mp4" rendertwopass="0" renderplay="0" position="23065" proxyminsize="1000" renderstartguide="-1" zoom="11" rendercategory="MP4" renderratio="0" zoneout="100" renderbitrate="20" renderzone="0" renderendguide="-1" renderexportaudio="0" proxyparams="-f mpegts -acodec libmp3lame -ac 2 -ab 128k -ar 48000 -vcodec mpeg2video -g 5 -deinterlace -s 640x360 -vb 700k" enableproxy="0" generateimageproxy="0" renderguide="0" rendertcoverlay="0"/>
+  <documentmetadata/>
+  <documentnotes>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:8pt; font-weight:400; font-style:normal;">
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;br />&lt;/p>&lt;/body>&lt;/html></documentnotes>
+  <profileinfo width="1440" display_aspect_den="9" frame_rate_den="1" description="HDV 1440x1080i 25 fps" height="1080" frame_rate_num="25" display_aspect_num="16" progressive="0" sample_aspect_num="4" sample_aspect_den="3"/>
+  <tracksinfo>
+   <trackinfo blind="1" mute="0" locked="0" trackname="Audio 2" type="audio"/>
+   <trackinfo blind="1" mute="0" locked="0" trackname="Audio 1" type="audio"/>
+   <trackinfo blind="0" mute="0" locked="0" trackname="Video 3"/>
+   <trackinfo blind="0" mute="0" locked="0" trackname="Video 2"/>
+   <trackinfo blind="0" mute="0" locked="0" trackname="Video 1"/>
+  </tracksinfo>
+  <kdenlive_producer audio_max="0" id="1" pix_fmt="yuv444p" default_video="0" fps="30" analysisdata="" name="106.mp4" videocodecid="h264" colorspace="709" videocodec="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10" resource="/home/pedro/kdenlive/IZ/Aulas Python/Aulas Python - 106 - Ferramentas de Sistema II: Básico módulo os/106.mp4" default_audio="-1" duration="26408" file_hash="1cb1892c261a3c99bfb149ba79988ecb" aspect_ratio="1" video_max="0" progressive="1" type="2" frame_size="1360x768" file_size="56516846">
+   <metaproperty tool="" name="meta.attr.0.stream.creation_time">2014-12-07 12:25:05</metaproperty>
+   <metaproperty tool="" name="meta.attr.0.stream.language">eng</metaproperty>
+   <metaproperty tool="" name="meta.attr.compatible_brands">mp42mp41isomiso2</metaproperty>
+   <metaproperty tool="" name="meta.attr.creation_time">2014-12-07 12:25:05</metaproperty>
+   <metaproperty tool="" name="meta.attr.encoder">x264</metaproperty>
+   <metaproperty tool="" name="meta.attr.major_brand">mp42</metaproperty>
+   <metaproperty tool="" name="meta.attr.minor_version">0</metaproperty>
+  </kdenlive_producer>
+  <kdenlive_producer audio_max="63" audiocodec="PCM signed 16-bit little-endian" channels="1" duration="26602" frame_size="1440x1080" frequency="44100" analysisdata="" file_size="93851382" aspect_ratio="0" file_hash="6d29b16889788a21abd48e791cd31f67" type="1" id="2" name="106.wav" resource="/home/pedro/kdenlive/IZ/Aulas Python/Aulas Python - 106 - Ferramentas de Sistema II: Básico módulo os/106.wav"/>
+  <markers/>
+  <groups/>
+ </kdenlivedoc>
+</mlt>
