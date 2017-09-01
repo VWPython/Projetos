@@ -4,13 +4,13 @@ def calculate_avm():
     """
 
     # Points Completed
-    PC = int(input("Insert the sprint completed store point: "))
+    PC = int(input("Insert the sprint completed store point (PC): "))
 
     # Planned Store Points
-    PSP = int(input("Insert the release planned store point: "))
+    PSP = int(input("Insert the release planned store point (PSP): "))
 
     # Story Points Completed
-    SPC = int(input("Insert the completed release store point: "))
+    SPC = int(input("Insert the completed release store point (SPC): "))
 
     # Expected Percent Complete
     sprint = int(input("Insert the total sprint completed: "))
@@ -22,7 +22,7 @@ def calculate_avm():
     members_number = float(input("Insert the number of members working in this store point: "))
 
     # Atual Percent Complete
-    APC = PC/PSP
+    APC = SPC/PSP
 
     print("Pontos completados (PC):", PC)
     print("Pontos planejados na release (PSP):", PSP)
