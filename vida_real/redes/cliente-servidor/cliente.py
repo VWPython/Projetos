@@ -101,7 +101,8 @@ class Client(Thread):
 def main():
     # Configurações de conexão do servidor
     # O nome do servidor pode ser o endereço de IP ou domínio (www.algo.com)
-    server_host = 'localhost'
+    # Insere o IP da maquina onde se localiza o servidor (ifconfig - addr)
+    server_host = ''
     server_port = 5000
 
     running = True

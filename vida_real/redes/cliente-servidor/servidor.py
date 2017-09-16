@@ -13,7 +13,7 @@ def configure_server():
     Configura o servidor com o host e a porta
     """
 
-    server_host = 'localhost'
+    server_host = ''
     server_port = 5000
     return (server_host, server_port)
 
