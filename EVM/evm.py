@@ -4,26 +4,28 @@ def calculate_avm():
     """
 
     # Points Completed
-    PC = int(input("Insert the sprint completed store point (PC): "))
+    PC = int(input("Insira os pontos completados nessa sprint (PC): "))
 
     # Planned Store Points
-    PSP = int(input("Insert the release planned store point (PSP): "))
+    PSP = int(input("Insira os pontos planejados na release (PSP): "))
 
     # Story Points Completed
-    SPC = int(input("Insert the completed release store point (SPC): "))
+    SPC = int(input("Insira os pontos completados da release (SPC): "))
 
     # Expected Percent Complete
-    sprint = int(input("Insert the total sprint completed: "))
-    sprints = int(input("Insert the total sprints of release: "))
+    sprint = int(input("Insira o número de sprints completadas: "))
+    sprints = int(input("Insira o número de sprints da release: "))
     EPC = sprint/sprints
 
     # Point cost
-    price_per_hour = float(input("Insert the professional price per hour: "))
-    members_number = float(input("Insert the number of members working in this store point: "))
+    estimate = float(input("Insira o orçamento do projeto: "))
+    price_per_hour = float(input("Insira o preço do profissional por hora de trabalho: "))
+    members_number = float(input("Insira o número de membros trabalhando nessa sprint: "))
 
     # Atual Percent Complete
     APC = SPC/PSP
 
+    print("\n")
     print("Pontos completados (PC):", PC)
     print("Pontos planejados na release (PSP):", PSP)
     print("Pontos completados na release atualmente (SPC):", SPC)
@@ -108,14 +110,6 @@ def calculate_avm():
     else:
         print("Ruim: O projeto está atrasado.")
 
-    # Estimate At Complete
-    EAC = AC + 1/CPI * (BAC - EV)
-    print("Estimativa final de custos (EAC): %.2f" % EAC)
-
-    if EAC > BAC:
-        print("Ruim: A estimativa de custo do projeto está acima do orçamento.")
-    else:
-        print("Excelente: A estimativa de custo do projeto está de acordo com o orçamento.")
 
 if __name__ == '__main__':
     calculate_avm()
